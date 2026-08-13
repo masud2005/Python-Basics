@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 # pyrefly: ignore [missing-import]
 from pydantic import BaseModel
+from routers import users
 
 class User(BaseModel):
     name: str
@@ -12,6 +13,8 @@ class User(BaseModel):
     is_verified: bool = False
 
 app = FastAPI()
+
+app.include_router(users.router)
 
 @app.get("/")
 def root():
