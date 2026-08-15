@@ -27,5 +27,8 @@ def startup_event():
 def read_root():
     return {"message": "Modular FastAPI Server is Running!"}
 
+from app.auth.router import router as auth_router
+
 # Include Routers
+app.include_router(auth_router)
 app.include_router(users_router)
